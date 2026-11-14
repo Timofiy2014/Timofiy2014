@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let cart = [];
 
-    // ЗАВАНТАЖЕННЯ ЗБЕРЕЖЕНОГО КОШИКА
+    // ЗАВАНТАЖЕННЯ КОШИКА
     try {
         const saved = JSON.parse(localStorage.getItem('fiammaCart'));
 
@@ -34,13 +34,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const orderButton = document.getElementById('orderButton');
     const toast = document.getElementById('toast');
 
-    // ПЕРЕВІРКА HTML
     if (
         !cartToggle || !cartModal || !cartBackdrop ||
         !closeCart || !cartItems || !cartTotal ||
         !cartBadge || !orderButton || !toast
     ) {
-        console.error('Помилка: не знайдено один із елементів кошика в HTML!');
+        console.error('Не знайдено елемент кошика!');
         return;
     }
 
@@ -49,18 +48,18 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             localStorage.setItem('fiammaCart', JSON.stringify(cart));
         } catch (error) {
-            console.error('Не вдалося зберегти кошик:', error);
+            console.error('Помилка збереження кошика:', error);
         }
     }
 
-    // ВІДКРИТИ КОШИК
+    // ВІДКРИТТЯ КОШИКА
     function openCart() {
         cartModal.classList.add('active');
         cartBackdrop.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 
-    // ЗАКРИТИ КОШИК
+    // ЗАКРИТТЯ КОШИКА
     function closeCartModal() {
         cartModal.classList.remove('active');
         cartBackdrop.classList.remove('active');
@@ -71,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     closeCart.addEventListener('click', closeCartModal);
     cartBackdrop.addEventListener('click', closeCartModal);
 
-    document.addEventListener('keydown', function (event) {
+    document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
             closeCartModal();
         }
@@ -86,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         clearTimeout(toastTimer);
 
-        toastTimer = setTimeout(function () {
+        toastTimer = setTimeout(function() {
             toast.classList.remove('show');
         }, 2000);
     }
@@ -99,22 +98,27 @@ document.addEventListener('DOMContentLoaded', function () {
         const pizza = document.createElement('div');
 
         pizza.className = 'flying-pizza';
-        pizza.textContent = '';
+        pizza.textContent = '🍕';
+        pizza.style.position = 'fixed';
         pizza.style.left = start.left + 'px';
         pizza.style.top = start.top + 'px';
+        pizza.style.fontSize = '35px';
+        pizza.style.zIndex = '9999';
+        pizza.style.pointerEvents = 'none';
+        pizza.style.transition = 'transform .75s ease, opacity .75s ease';
 
         document.body.appendChild(pizza);
 
         const x = end.left - start.left;
         const y = end.top - start.top;
 
-        requestAnimationFrame(function () {
+        requestAnimationFrame(function() {
             pizza.style.transform =
                 `translate(${x}px, ${y}px) scale(0.2) rotate(360deg)`;
             pizza.style.opacity = '0';
         });
 
-        setTimeout(function () {
+        setTimeout(function() {
             pizza.remove();
         }, 800);
 
@@ -125,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ДОДАТИ ПІЦУ
     function addPizza(name, price) {
-
         const existing = cart.find(item => item.name === name);
 
         if (existing) {
@@ -139,12 +142,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         renderCart();
-        showToast(name + ' додано до кошика! ');
+        showToast(name + ' додано до кошика!');
     }
 
     // НАТИСКАННЯ НА ЦІНУ
-    document.addEventListener('click', function (event) {
-
+    document.addEventListener('click', function(event) {
         const button = event.target.closest('.price');
 
         if (!button) return;
@@ -153,18 +155,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const price = Number(button.dataset.price);
 
         if (!name || !Number.isFinite(price) || price < 0) {
-            console.error('Перевір data-name та data-price у кнопці!');
+            console.error('Перевір data-name та data-price!');
             return;
         }
 
         flyToCart(button);
         addPizza(name, price);
-
     });
 
-    // КІЛЬКІСТЬ
+    // ЗМІНА КІЛЬКОСТІ
     function changeQuantity(index, amount) {
-
         if (!cart[index]) return;
 
         cart[index].quantity += amount;
@@ -176,9 +176,8 @@ document.addEventListener('DOMContentLoaded', function () {
         renderCart();
     }
 
-    // ВИДАЛИТИ ПІЦУ
+    // ВИДАЛЕННЯ ПІЦИ
     function removePizza(index) {
-
         if (!cart[index]) return;
 
         const name = cart[index].name;
@@ -186,13 +185,11 @@ document.addEventListener('DOMContentLoaded', function () {
         cart.splice(index, 1);
 
         renderCart();
-
         showToast(name + ' видалено з кошика');
     }
 
-    // ОНОВИТИ КОШИК
+    // ОНОВЛЕННЯ КОШИКА
     function renderCart() {
-
         cartItems.innerHTML = '';
 
         let total = 0;
@@ -208,8 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
         }
 
-        cart.forEach(function (item, index) {
-
+        cart.forEach(function(item, index) {
             total += item.price * item.quantity;
             count += item.quantity;
 
@@ -220,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
             info.className = 'cart-info';
 
             const name = document.createElement('h3');
-            name.textContent = ' ' + item.name;
+            name.textContent = item.name;
 
             const price = document.createElement('p');
             price.textContent = '$' + item.price + ' / шт.';
@@ -235,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
             minus.textContent = '−';
             minus.title = 'Зменшити кількість';
 
-            minus.addEventListener('click', function () {
+            minus.addEventListener('click', function() {
                 changeQuantity(index, -1);
             });
 
@@ -248,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
             plus.textContent = '+';
             plus.title = 'Додати ще';
 
-            plus.addEventListener('click', function () {
+            plus.addEventListener('click', function() {
                 changeQuantity(index, 1);
             });
 
@@ -258,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function () {
             remove.className = 'remove-item';
             remove.title = 'Видалити піцу';
 
-            remove.addEventListener('click', function () {
+            remove.addEventListener('click', function() {
                 removePizza(index);
             });
 
@@ -269,9 +265,7 @@ document.addEventListener('DOMContentLoaded', function () {
             subtotal.textContent = '$' + (item.price * item.quantity);
 
             row.append(info, controls, subtotal);
-
             cartItems.appendChild(row);
-
         });
 
         cartTotal.textContent = '$' + total;
@@ -282,20 +276,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // КУПИТИ
-    orderButton.addEventListener('click', function () {
-
+    orderButton.addEventListener('click', function() {
         if (cart.length === 0) return;
 
-        const order = cart.map(function (item) {
+        const order = cart.map(function(item) {
             return item.name + ' — ' + item.quantity + ' шт.';
         }).join('\n');
 
-        const total = cart.reduce(function (sum, item) {
+        const total = cart.reduce(function(sum, item) {
             return sum + item.price * item.quantity;
         }, 0);
 
         alert(
-            'ВАШЕ ЗАМОВЛЕННЯ \n\n' +
+            'ВАШЕ ЗАМОВЛЕННЯ\n\n' +
             order +
             '\n\nРазом: $' + total +
             '\n\nДякуємо за замовлення!'
@@ -305,13 +298,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         renderCart();
         closeCartModal();
-
-        showToast('Дякуємо за покупку! ');
+        showToast('Дякуємо за покупку!');
     });
 
     // ПОЧАТКОВИЙ ЗАПУСК
     renderCart();
 
-    console.log("FIAMMA JAVASCRIPT ПРАЦЮЄ!"); 
-})
+    console.log('FIAMMA JAVASCRIPT ПРАЦЮЄ!');
+
+});
 
