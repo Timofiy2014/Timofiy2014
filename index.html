@@ -1,185 +1,171 @@
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Мій сучасний сайт">
-    <title>NEXUS — Мій сайт</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Fiamma — Pizza Restaurant</title>
+    <link rel="stylesheet" href="./style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Шапка сайту -->
-    <header class="header">
-        <a href="#home" class="logo">NEXUS<span>.</span></a>
+    <!-- КОШИК -->
+    <button class="cart-toggle" id="cartToggle">
+        <span class="cart-icon">🛒</span>
+        <span>Кошик</span>
+        <span class="cart-badge" id="cartBadge">0</span>
+    </button>
 
-        <button class="menu-toggle" id="menuToggle"
-                aria-label="Відкрити меню" aria-expanded="false">
-            ☰
-        </button>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
 
-        <nav class="nav" id="nav">
-            <a href="#home">Головна</a>
-            <a href="#about">Про нас</a>
-            <a href="#services">Можливості</a>
-            <a href="#contacts">Контакти</a>
-            <button id="themeToggle" class="theme-btn"
-                    aria-label="Змінити тему">☀️</button>
-        </nav>
-    </header>
+        <div class="hero-content">
+            <p class="eyebrow">З 1998 РОКУ · СПРАВЖНЯ ІТАЛІЯ</p>
+            <h1>Fiamma<span>.</span></h1>
+            <p class="hero-description">
+                Справжня неаполітанська піца, приготована з любов'ю та найкращих інгредієнтів.
+            </p>
+            <a href="#menu" class="hero-button">
+                Переглянути меню <span>→</span>
+            </a>
+        </div>
 
-    <!-- Головний екран -->
-    <main>
-        <section class="hero" id="home">
-            <div class="hero-content">
-                <span class="tag">🚀 Ласкаво просимо!</span>
+        <div class="hero-bottom">
+            <span>AUTHENTIC NEAPOLITAN PIZZA</span>
+            <span>485°C · 90 SECONDS</span>
+        </div>
+    </section>
 
-                <h1>Створи своє <span>майбутнє</span></h1>
+    <!-- МЕНЮ -->
+    <section class="menu-section" id="menu">
+        <div class="menu-container">
 
-                <p>
-                    Сучасний сайт, створений за допомогою HTML,
-                    CSS та JavaScript. Твоя ідея — наш старт!
-                </p>
-
-                <div class="hero-buttons">
-                    <a href="#about" class="btn primary">
-                        Дізнатися більше →
-                    </a>
-                    <a href="#services" class="btn secondary">
-                        Можливості
-                    </a>
+            <div class="section-top">
+                <div>
+                    <p class="section-label">НАШІ СМАКИ</p>
+                    <h2>Меню<span>.</span></h2>
+                    <p class="section-description">
+                        Обирай улюблену піцу та додавай її до кошика.
+                    </p>
                 </div>
+                <div class="menu-count">06 / PIZZA</div>
             </div>
 
-            <div class="hero-visual">
-                <div class="glow"></div>
-                <div class="code-card">
-                    <div class="dots">
-                        <i></i><i></i><i></i>
+            <div class="menu-list">
+
+                <div class="menu-item">
+                    <div class="item-number">01</div>
+                    <div class="item-info">
+                        <h3>Margherita</h3>
+                        <p>Сан-Марцано, фіор ді латте, базилік</p>
                     </div>
-                    <pre><span>const</span> website = {
-  name: <b>"NEXUS"</b>,
-  design: <b>"modern"</b>,
-  future: <b>true</b>
-};
-
-<span>console</span>.log(website);</pre>
-                    <div class="success">✓ Сайт успішно запущено</div>
+                    <button type="button" class="price" data-name="Margherita" data-price="12">$12</button>
                 </div>
+
+                <div class="menu-item">
+                    <div class="item-number">02</div>
+                    <div class="item-info">
+                        <h3>Diavola</h3>
+                        <p>Гостра салямі, чилі олія, моцарела</p>
+                    </div>
+                    <button type="button" class="price" data-name="Diavola" data-price="15">$15</button>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-number">03</div>
+                    <div class="item-info">
+                        <h3>Quattro Formaggi</h3>
+                        <p>Горгонзола, фонтіна, пармезан, моцарела</p>
+                    </div>
+                    <button type="button" class="price" data-name="Quattro Formaggi" data-price="16">$16</button>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-number">04</div>
+                    <div class="item-info">
+                        <h3>Funghi</h3>
+                        <p>Дикі гриби, трюфельний крем, чебрець</p>
+                    </div>
+                    <button type="button" class="price" data-name="Funghi" data-price="17">$17</button>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-number">05</div>
+                    <div class="item-info">
+                        <h3>Prosciutto e Rucola</h3>
+                        <p>Пармська шинка, рукола, пармезан</p>
+                    </div>
+                    <button type="button" class="price" data-name="Prosciutto e Rucola" data-price="18">$18</button>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-number">06</div>
+                    <div class="item-info">
+                        <h3>Marinara</h3>
+                        <p>Томати, часник, орегано, оливкова олія</p>
+                    </div>
+                    <button type="button" class="price" data-name="Marinara" data-price="10">$10</button>
+                </div>
+
             </div>
-        </section>
 
-        <!-- Про сайт -->
-        <section class="section about" id="about">
-            <span class="tag">ПРО ПРОЄКТ</span>
-            <h2>Технології без <span>меж</span></h2>
-            <p class="section-desc">
-                Усе необхідне для стильного та швидкого вебсайту.
-            </p>
-
-            <div class="stats">
-                <div class="stat">
-                    <strong>100%</strong>
-                    <p>Адаптивний дизайн</p>
-                </div>
-                <div class="stat">
-                    <strong>3</strong>
-                    <p>Основні технології</p>
-                </div>
-                <div class="stat">
-                    <strong>∞</strong>
-                    <p>Можливості</p>
-                </div>
+            <div class="menu-bottom">
+                <span>FATTO CON AMORE  </span>
+                <span>MADE IN ITALY STYLE</span>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Картки -->
-        <section class="section services" id="services">
-            <span class="tag">МОЖЛИВОСТІ</span>
-            <h2>Що ми <span>пропонуємо?</span></h2>
-            <p class="section-desc">
-                Три технології — один крутий результат.
-            </p>
+    <!-- ЗАТЕМНЕННЯ -->
+    <div class="cart-backdrop" id="cartBackdrop"></div>
 
-            <div class="cards">
-                <article class="card">
-                    <div class="card-icon">💻</div>
-                    <h3>HTML</h3>
-                    <p>
-                        Створює основу сайту: заголовки, текст,
-                        зображення, посилання та кнопки.
-                    </p>
-                    <a href="https://developer.mozilla.org/uk/docs/Web/HTML"
-                       target="_blank" rel="noopener noreferrer">
-                        Вивчити HTML →
-                    </a>
-                </article>
+    <!-- КОШИК -->
+    <aside class="cart-modal" id="cartModal">
 
-                <article class="card">
-                    <div class="card-icon">🎨</div>
-                    <h3>CSS</h3>
-                    <p>
-                        Додає кольори, красиві ефекти, анімації
-                        та адаптивний дизайн.
-                    </p>
-                    <a href="https://developer.mozilla.org/uk/docs/Web/CSS"
-                       target="_blank" rel="noopener noreferrer">
-                        Вивчити CSS →
-                    </a>
-                </article>
-
-                <article class="card">
-                    <div class="card-icon">⚡</div>
-                    <h3>JavaScript</h3>
-                    <p>
-                        Додає інтерактивність, реакцію на кліки
-                        та динамічні елементи.
-                    </p>
-                    <a href="https://developer.mozilla.org/uk/docs/Web/JavaScript"
-                       target="_blank" rel="noopener noreferrer">
-                        Вивчити JS →
-                    </a>
-                </article>
+        <div class="cart-header">
+            <div>
+                <p class="section-label">ВАШЕ ЗАМОВЛЕННЯ</p>
+                <h2>Кошик<span>.</span></h2>
             </div>
-        </section>
+            <button type="button" id="closeCart" class="close-cart">×</button>
+        </div>
 
-        <!-- Контакти -->
-        <section class="section contact" id="contacts">
-            <span class="tag">КОНТАКТИ</span>
-            <h2>Маєш <span>ідею?</span></h2>
-            <p class="section-desc">
-                Напиши повідомлення — форма працює прямо у браузері.
+        <div class="cart-content">
+            <div id="cartItems"></div>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Разом до сплати</span>
+                <strong id="cartTotal">$0</strong>
+            </div>
+
+            <button type="button" class="order-button" id="orderButton" disabled>
+                КУПИТИ ЗАРАЗ <span>→</span>
+            </button>
+
+            <p class="delivery-note">
+                Дякуємо, що обираєте Fiamma 
             </p>
+        </div>
 
-            <form id="contactForm" class="contact-form">
-                <label for="name">Твоє ім'я</label>
-                <input type="text" id="name"
-                       placeholder="Введи своє ім'я" required>
+    </aside>
 
-                <label for="email">Електронна пошта</label>
-                <input type="email" id="email"
-                       placeholder="name@example.com" required>
+    <!-- ПОВІДОМЛЕННЯ -->
+    <div class="toast" id="toast"></div>
 
-                <label for="message">Повідомлення</label>
-                <textarea id="message" rows="5"
-                          placeholder="Напиши щось..." required></textarea>
-
-                <button type="submit" class="btn primary">
-                    Підготувати повідомлення →
-                </button>
-                <p id="formStatus" role="status" aria-live="polite"></p>
-            </form>
-        </section>
-    </main>
-
-    <!-- Підвал -->
-    <footer class="footer">
-        <a href="#home" class="logo">NEXUS<span>.</span></a>
-        <p>© <span id="year"></span> NEXUS. Створено з ❤️</p>
-        <a href="#home">На початок ↑</a>
+    <!-- FOOTER -->
+    <footer>
+        <h2>Fiamma<span>.</span></h2>
+        <p>AUTHENTIC NEAPOLITAN PIZZA</p>
+        <div class="footer-line"></div>
+        <span>Зроблено з любов'ю до піци. © 2026</span>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="./js.js"></script>
 </body>
 </html>
