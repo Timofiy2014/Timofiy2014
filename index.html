@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -14,21 +15,23 @@
 
     <!-- КОШИК -->
     <button class="cart-toggle" id="cartToggle">
-        <span class="cart-icon">🛒</span>
+        <span>🛒</span>
         <span>Кошик</span>
         <span class="cart-badge" id="cartBadge">0</span>
     </button>
 
-    <!-- HERO -->
+    <!-- ГОЛОВНИЙ ЕКРАН -->
     <section class="hero">
         <div class="hero-overlay"></div>
 
         <div class="hero-content">
             <p class="eyebrow">З 1998 РОКУ · СПРАВЖНЯ ІТАЛІЯ</p>
             <h1>Fiamma<span>.</span></h1>
+
             <p class="hero-description">
                 Справжня неаполітанська піца, приготована з любов'ю та найкращих інгредієнтів.
             </p>
+
             <a href="#menu" class="hero-button">
                 Переглянути меню <span>→</span>
             </a>
@@ -52,71 +55,127 @@
                         Обирай улюблену піцу та додавай її до кошика.
                     </p>
                 </div>
-                <div class="menu-count">06 / PIZZA</div>
+
+                <div class="menu-count">09 / PIZZA</div>
             </div>
 
-            <div class="menu-list">
+            <div class="menu-grid">
 
-                <div class="menu-item">
-                    <div class="item-number">01</div>
+                <!-- 1 -->
+                <article class="menu-item">
+                    <img class="pizza-photo"
+                    src="https://images.unsplash.com/photo-1579751626657-72bc17010498?w=700"
+                    alt="Margherita" loading="lazy">
                     <div class="item-info">
                         <h3>Margherita</h3>
-                        <p>Сан-Марцано, фіор ді латте, базилік</p>
+                        <p>Томати, моцарела, свіжий базилік</p>
+                        <button class="price" data-name="Margherita" data-price="12">$12</button>
                     </div>
-                    <button type="button" class="price" data-name="Margherita" data-price="12">$12</button>
-                </div>
+                </article>
 
-                <div class="menu-item">
-                    <div class="item-number">02</div>
+                <!-- 2 -->
+                <article class="menu-item">
+                    <img class="pizza-photo"
+                    src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=700"
+                    alt="Diavola" loading="lazy">
                     <div class="item-info">
                         <h3>Diavola</h3>
-                        <p>Гостра салямі, чилі олія, моцарела</p>
+                        <p>Гостра салямі, чилі, моцарела</p>
+                        <button class="price" data-name="Diavola" data-price="15">$15</button>
                     </div>
-                    <button type="button" class="price" data-name="Diavola" data-price="15">$15</button>
-                </div>
+                </article>
 
-                <div class="menu-item">
-                    <div class="item-number">03</div>
+                <!-- 3 -->
+                <article class="menu-item">
+                    <img class="pizza-photo"
+                    src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=700"
+                    alt="Quattro Formaggi" loading="lazy">
                     <div class="item-info">
                         <h3>Quattro Formaggi</h3>
                         <p>Горгонзола, фонтіна, пармезан, моцарела</p>
+                        <button class="price" data-name="Quattro Formaggi" data-price="16">$16</button>
                     </div>
-                    <button type="button" class="price" data-name="Quattro Formaggi" data-price="16">$16</button>
-                </div>
+                </article>
 
-                <div class="menu-item">
-                    <div class="item-number">04</div>
+                <!-- 4 -->
+                <article class="menu-item">
+                    <img class="pizza-photo"
+                    src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=700"
+                    alt="Funghi" loading="lazy">
                     <div class="item-info">
                         <h3>Funghi</h3>
-                        <p>Дикі гриби, трюфельний крем, чебрець</p>
+                        <p>Гриби, вершковий соус, чебрець</p>
+                        <button class="price" data-name="Funghi" data-price="17">$17</button>
                     </div>
-                    <button type="button" class="price" data-name="Funghi" data-price="17">$17</button>
-                </div>
+                </article>
 
-                <div class="menu-item">
-                    <div class="item-number">05</div>
+                <!-- 5 -->
+                <article class="menu-item">
+                    <img class="pizza-photo"
+                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=700"
+                    alt="Prosciutto e Rucola" loading="lazy">
                     <div class="item-info">
                         <h3>Prosciutto e Rucola</h3>
                         <p>Пармська шинка, рукола, пармезан</p>
+                        <button class="price" data-name="Prosciutto e Rucola" data-price="18">$18</button>
                     </div>
-                    <button type="button" class="price" data-name="Prosciutto e Rucola" data-price="18">$18</button>
-                </div>
+                </article>
 
-                <div class="menu-item">
-                    <div class="item-number">06</div>
+                <!-- 6 -->
+                <article class="menu-item">
+                    <img class="pizza-photo"
+                    src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=700"
+                    alt="Marinara" loading="lazy">
                     <div class="item-info">
                         <h3>Marinara</h3>
                         <p>Томати, часник, орегано, оливкова олія</p>
+                        <button class="price" data-name="Marinara" data-price="10">$10</button>
                     </div>
-                    <button type="button" class="price" data-name="Marinara" data-price="10">$10</button>
-                </div>
+                </article>
+
+                <!-- 7 -->
+                <article class="menu-item">
+                    <img class="pizza-photo"
+                    src="https://images.unsplash.com/photo-1604382355076-af4b0eb60143?w=700"
+                    alt="BBQ Chicken" loading="lazy">
+                    <div class="item-info">
+                        <h3>BBQ Chicken</h3>
+                        <p>Курка BBQ, червона цибуля, моцарела</p>
+                        <button class="price" data-name="BBQ Chicken" data-price="17">$17</button>
+                    </div>
+                </article>
+
+                <!-- 8 -->
+                <article class="menu-item">
+                    <img class="pizza-photo"
+                    src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=700"
+                    alt="Pepperoni" loading="lazy">
+                    <div class="item-info">
+                        <h3>Pepperoni</h3>
+                        <p>Пепероні, чорні оливки, моцарела</p>
+                        <button class="price" data-name="Pepperoni" data-price="16">$16</button>
+                    </div>
+                </article>
+
+                <!-- 9 -->
+                <article class="menu-item">
+                    <img class="pizza-photo"
+                    src="https://images.unsplash.com/photo-1579751626657-72bc17010498?w=700"
+                    alt="Burrata e Pesto" loading="lazy">
+                    <div class="item-info">
+                        <h3>Burrata e Pesto</h3>
+                        <p>Бурата, томати чері, песто та базилік</p>
+                        <button class="price" data-name="Burrata e Pesto" data-price="19">$19</button>
+                    </div>
+                </article>
 
             </div>
 
             <div class="menu-bottom">
-                <span>FATTO CON AMORE  </span>
+                <span>FATTO CON AMORE</span>
                 <span>MADE IN ITALY STYLE</span>
             </div>
+
         </div>
     </section>
 
@@ -131,6 +190,7 @@
                 <p class="section-label">ВАШЕ ЗАМОВЛЕННЯ</p>
                 <h2>Кошик<span>.</span></h2>
             </div>
+
             <button type="button" id="closeCart" class="close-cart">×</button>
         </div>
 
@@ -149,7 +209,7 @@
             </button>
 
             <p class="delivery-note">
-                Дякуємо, що обираєте Fiamma 
+                Дякуємо, що обираєте Fiamma
             </p>
         </div>
 
@@ -169,3 +229,4 @@
     <script src="./js.js"></script>
 </body>
 </html>
+
